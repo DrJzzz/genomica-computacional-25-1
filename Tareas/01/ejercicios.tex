@@ -1,0 +1,248 @@
+\documentclass[letter]{article}
+
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{tcolorbox}
+\usepackage{algorithm2e}
+\tcbuselibrary{theorems}
+\usepackage{parskip}
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{fancyvrb}
+\usepackage{listings}
+\usepackage{enumerate}
+\usepackage{listings}
+\graphicspath{ {images/} }
+\usepackage{cite}
+\lstset{language=Python}  
+
+\newcommand{\commentedbox}[2]{%
+  \mbox{
+    \begin{tabular}[t]{@{}c@{}}
+    $\boxed{\displaystyle#1}$\\
+    #2
+    \end{tabular}%
+  }%
+}
+\usepackage{vmargin}
+\usepackage[colorinlistoftodos]{todonotes}
+\setmargins{1.5cm}       % margen izquierdo
+{1.0cm}                  % margen superior
+{18.0cm}                 % anchura del texto
+{23.42cm}                % altura del texto
+{10pt}                   % altura de los encabezados
+{1cm}                    % espacio entre el texto y los encabezados
+{0pt}                    % altura del pie de página
+{2cm}
+
+\title{Tarea 1}
+\date{Fecha de entrega: Lunes 9 de septiembre del 2024 }
+\author{Genómica Computacional - 2025-I}
+\begin{document}
+\maketitle
+
+    \begin{quote}
+      {\emph Durante mucho tiempo se creyó que esos libros impenetrables 
+      correspondían a lenguas pretéritas o remotas. Es verdad que los hombres más
+      antiguos, los primeros bibliotecarios, usaban un lenguaje asaz diferente del
+      que hablamos ahora; es verdad que unas millas a la derecha la lengua es dialectal
+      y que noventa pisos más arriba, es incomprensible.
+      \hfill{La Biblioteca de Babel - JLB}}
+    \end{quote}
+    
+    
+    
+    \section{Instrucciones}
+    Responde las siguientes preguntas y haz las implementaciones en código 
+    como se indica a continuación:\\
+    \begin{itemize}
+        \item Indica los integrantes de tu equipo en un archivo de texto llamado 00Integantes.txt.
+    Todos deberán presentar la misma tarea dentro de la actividad en el classroom.\\
+        \item Haz las implementaciones en un script python que se llame {\tt{tarea\_n.py}} o bien en un 
+    notebook que se llame igual.\\
+        \item Sube todos los archivos a la entrada de la tarea correspondiente en el classroom 
+    (preferentemente sin comprimir a menos de que sea inevitable debido a su tamaño o complejidad).
+    
+    \end{itemize}
+    
+    \section{Expresiones regulares}
+    
+        \begin{enumerate}
+            \item Considera la siguiente expresión regular, 
+            $\tt{r'TATAG  [\^{}AT](T*|AC)TATA'}$,
+            y señala las cadenas que contengan instancias de la misma.
+            También indica las posiciones donde cada instancia se encuentra. 
+            
+           Ejemplo: En b) de la posición 10 a 20
+           \begin{enumerate}
+                \item TATACGCGTATAGAACTATAGCCCTATA
+                \item TATAGCGTATAGGACTATAGTATA
+                \item GTATGTATAGCCGACTTA
+                \item TATAGCCGACTATA
+            \end{enumerate}
+           
+            \item A continuación se presentan 10 secuencias hipotéticas.
+            Diseña una expresión regular que detecte regiones codificantes válidas
+            y específica cuales de las secuencias la cumplen:
+        
+        \begin{verbatim}
+        1.  ATATATACATACTGGTAATGGGCGCGCGTGTGTTAAGTTCTGTTGTAGGGGTGATTAGGGGCG
+        2.  GGCCCACACCCCACACCAATATATGTGGTGTGGGCTCCACTCTCTCGCGCTCGCGCTGGGGAT
+        3.  ATAAGGTGTGTGGGCGCGCCCCGCGCGCGCGTTTTTTCGCGCGCCCCCGCGCGCGCGCGCGCG
+        4.  GGCGCGGGACGCGGCGGCGGATCCCGATCCGTGCGTCAATACTATTATGGCCAGATAGAATAA
+        5.  GTGCTGCTGCGGCGCCCACACCTATTATCTCTCTCTCTCTGCCTCTCCACCTCGGGGCTTAAT
+        6.  GCGCTGCTGCTGGCTCGATGGGCGCGTGCGTCGTAGCTCGATGCTGGCTCGAGCTGTAATCTT
+        7.  GGCGCTCGCTCGGATGCGCGGCCGGGCTCTCTGCTCGCGCTCGCTTCGCGCTCGTGACCGCTG
+        8.  AATTGGTGCGCGCTCGCGCACACACAGAGAGAGGGTTTATATAGGATGATATATCCACATTGG
+        9.  ATGCTGCTGCTGGCTCTGCTTGCGCTCTGCTCGCTGGGGTGTGTGTGCCGCGCGCTGCTGCTC
+        10. GCTGGGCTCGCTCGATGCGCGCGGGCGCGCGACCGCGGACGGCGTCGCTGCTAAATGGGCTTC
+        \end{verbatim}
+    
+    	Debes entregar una lista con el número de línea en las que 
+    	hay una región codificante válida (como la hayas revisado en la clase
+        de biología), es decir, si en las líneas 0, 1 y 5 hubiera 
+    	entonces el resultado debería ser:
+
+             $$ [0, 1, 5]$$
+             
+        \end{enumerate}
+  
+    \section{Probabilidad y estadística}
+
+    \begin{enumerate}
+
+        \item En el archivo ${\tt{promotores.txt}}$ se encuentra 
+    		la lista de secuencias tomadas del genoma de {\it{Vitis vinifera}}
+    		y cada una de las secuencias puede que tenga alguno de las 
+    		diferentes formas en las que se ha encontrado el promotor GATA:
+    
+    		$\left \lbrace AGATAG, TGATAG, AGATAA, TGATAA  \right \rbrace$
+    
+    		Deseamos estudiar estas regiones en función del promotor GATA y 
+    		por lo tanto lo primero que deseamos es saber cuántas veces aparecen 
+    		los promotores en cada región.\\
+
+            \begin{itemize}
+                \item Haz un boxplot con la distribución de cada uno 
+                de los promotores 
+
+                \item ¿Cuál es la media y desviación estándar de cada
+                promotor?
+                
+            \end{itemize}
+    
+        \item {\it Misterio} Haz un script en python que reciba como parámetro un entero 
+        	que determinará la cantidad de iteraciones para el siguiente 
+        	algoritmo
+        
+        	\begin{algorithm}[H]
+        		\KwData{$M$ iteraciones}
+        		\KwResult{Número flotante $x$}
+        		$i \leftarrow 1$\;
+        		$D \leftarrow 0$\;
+        		\While{$i<M$}{
+        			$i \leftarrow i + 1$\;
+        			$x \leftarrow -1\leq uniform()\leq 1$\;
+        			$y \leftarrow -1\leq uniform()\leq 1$\;
+        			$d \leftarrow \sqrt{x^2 + y^2}$\;
+        			\If{$d \leq 1$} {
+        				$D \leftarrow D +1$\;
+        			}
+        		}
+        
+        		$x \leftarrow 4 \cdot D/i$\;
+        		\Return x\;
+        		\caption{Algoritmo misterio}
+        		\label{alg:misterio}
+        	\end{algorithm}
+        	{\bf{Tip}:} Revisa la documentación del paquete {\tt random}, particularmente
+        	de la biblioteca de {\tt numpy}.
+        
+        
+        	¿Qué está calculando el algoritmo \ref{alg:misterio}?
+
+        \item {\it Expansión - Modificación} Haz un función en python que reciba una cadena semilla y que con
+        probabilidad {\tt p} mute alguna posición elegida con probabilidad uniforme de la cadena original 
+        y con {\tt 1-p} la concatene con ella misma. 
+
+        \[ f(\sigma) \leftarrow  \begin{dcases}            
+                \operatorname{muta} (\sigma)   &  {\tt p} \\
+                \sigma \sigma  &  {\tt 1-p}
+        \end{dcases}
+        \]
+
+        Otra función debe recibir una cantidad de iteraciones para aplicar esta función.
+        El alfabeto a usar es $\Sigma = \lbrace 0,1 \rbrace$
+
+        Ejemplo:
+
+        \begin{lstlisting}
+        cadena=0
+        cad_final = itera_n_veces(f(cadena(0.25)), 5)
+        cad_final
+        00100010
+        \end{lstlisting}
+    
+        \item  Utilizando los siguientes datos de sensibilidad (93 por ciento)
+        	y especificidad (99 por ciento) reportados para cierta prueba rápida 
+        	de antígeno para detectar la infección por virus SARS-COV2 y considerando
+        	una prevalencia actual de COVID en México estimada a partir del promedio 
+        	de casos nuevos observados a lo largo de 2 semanas de 16000 casos activos
+        	respecto a una población total de 120,000,000 de habitantes encuentra:
+        	
+        	\begin{enumerate}
+        		\item ¿Cuál es la probabilidad de que si uno de ustedes se realiza
+                    una prueba rápida de este tipo y ésta resulta positiva ustedes en 
+                    realidad sean portadores del virus SARS-COV2?
+                \item ¿Cuál es la probabilidad de que si la prueba resulta negativa
+        			ustedes en realidad no sean portadores del virus SARS-COV2?
+        		\item Entre marzo y junio de 2021 se tuvo un promedio de nuevos contagios
+                    semanales de alrededor de 3000 casos, por lo que a lo largo de dos 
+                    semanas se tendría una prevalencia aproximada de 6000 casos activos respecto
+                    a 120000000 de habitantes. Calcula las probabilidades referidas en los 
+                    dos incisos anteriores pero considerando este nuevo dato de prevalencia. 
+                    ¿Qué puedes concluir respecto a las probabilidades obtenidas en ambos escenarios?, 
+                    ¿consideras que en el caso de las pruebas de detección de COVID es necesaria 
+                    una mayor sensibilidad o una mayor especificidad? Justifica tu respuesta.
+              \end{enumerate}
+        \item La estacionariedad es una característica propia de las series de tiempo. Una serie
+        de tiempo es una sucesión de estados (valores) cuyo orden refleja un proceso cronológico. 
+        La formación de una secuencia de ADN o ARN puede ser modelada dentro de este paradigma.
+        Decimos que una serie o secuencia es estacionaria si cada uno de los estados presentes 
+        en la misma provienen de una misma distribución de probabilidad. A continuación se te 
+        presentarán 5 secuencias de ADN de hebra simple en las que tu tarea consistirá en listar 
+        cuáles son estacionarias y cuáles no. Para lograr lo anterior se te recomienda:
+        \begin{enumerate}
+            \item Calcular la Esperanza y la Varianza de cada serie para distintas ventanas 
+            "temporales".
+            \item Recordar, qué tipo de variable aleatoria nos permite modelar la frecuencia de 
+            los nucleótidos en una secuencia de ADN.
+            \item Tu respuesta debe incluir, el código utilizado para responder la pregunta.
+        \end{enumerate}   
+        Secuencias:
+        \begin{verbatim}
+            0. CGGAGACTTTTCCACTGTCGTCGGAGTAGTAAAATAACGGTACGTCTTAGTGTGCACCATCGACTCTTT
+            GTATTGCTCGTTAGGGGTCGCAGCCTCTTGTTAAGCCGTAATGGGTGATCCCCGCTCGTGAAACGGTGCGAT
+            CCTGTGATCTGTCAGTATCGAAGGAGTGAAAAAGCGATTGCTAGCCGAGGCGTACCGTG
+            
+            1. CGGAGTCCCCCCCACCGCCGCCGGTGCTGCATATCTACGGCACGCCCCAGTGTGCACCATCGACTCTTT
+            GTATTGCTCGTTAGGGGTCGCAGCCTCTTGTTAAGCCGTAATGGGTGATCCCCGCTCGTGAAACGGTGCGAT
+            CCTGTGATCTATTGATGTTAGCAACATAGCCGCATAGTTATTGATTACAATATCTTATA
+            
+            2. CGGAGTCCCCCCCACCGCCGCCGGTGCTGCATATCTACGGCACGCCCCAGCGCGCTCCACCGACCCCCC
+            GCACCGCCCGCCAGGGGCCGCAGCCCCCCGCCATGCCGCTACGGGCGTCCCCCGCCCGCGATTCGGCGCGAC
+            CCCGCGACCCGCCTGCACCGTAGGAGCGTAATAGCGTCCGCCTGCCGAGGCGCACCGCG
+            
+            3. CCCTACCCGGCAGACCCCTCCACGCCCCCCCGTAGCACCGGAACCAGATCCGCGGAGCGGGGAGGGAGG
+            CGGGGGGGGGAGGTCGGTCGGGGGTGGGGCGACAAGAGAGGAAACGGCAAGGGGAAGGGAGGAAAAGGAGTG
+            GAACGGAGGATTCATAGTAACTTGCGAAACGCACACGAAATGTGAACCATCACTACCAG
+        \end{verbatim}
+    \end{enumerate}
+
+Si quieren leer {\emph{La Biblioteca de Babel}} lo pueden hacer en \href {https://www.ingenieria.unam.mx/dcsyhfi/material_didactico/Literatura_Hispanoamericana_Contemporanea/Autores_B/BORGES/Babel.pdf}{esta liga}
+
+\end{document}
