@@ -2,8 +2,31 @@
 # Implementaciones en python. 
 # Genómica computacional.
 
-# importamos las dependencias.
 import numpy as np
+import re
+
+## Expresiones regulares. ##
+
+print("##Expresiones regulares.##\n")
+
+# Ejercicio 1
+
+regex01 = re.compile('TATAG[^AT](T*|AC)TATA')
+
+testSequences = ["TATACGCGTATAGAACTATAGCCCTATA",
+                 "TATAGCGTATAGGACTATAGTATA",
+                 "GTATGTATAGCCGACTTA",
+                 "TATAGCCGACTATA"
+                 ]
+
+for i in range(0, len(testSequences)):
+    out = "La cadena " + str(i + 1)
+    ans = regex01.search(testSequences[i])
+    if ans:
+        out = out + " contiene la expresión regular en la posición [" + str(ans.start()) + ", " + str(ans.end()) + "]"
+    else:
+        out += " no contiene la expresión regular."
+    print(out)
 
 ## Probabilidad y Estadística. ##
 print("##Probabilidad y Estadística.##\n")
