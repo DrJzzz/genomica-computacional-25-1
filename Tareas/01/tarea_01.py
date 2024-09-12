@@ -90,6 +90,3 @@ def itera(cadena, n, p):
     return cadena
 print("Ejercicio 3: " + itera("1", 10, 0.9))
 
-
-
-
