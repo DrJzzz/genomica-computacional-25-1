@@ -2,10 +2,58 @@
 # Implementaciones en python. 
 # Genómica computacional.
 
-# importamos las dependencias.
 import numpy as np
+import re
 import pandas as pd
 import matplotlib.pyplot as plt
+
+## Expresiones regulares. ##
+
+print("##Expresiones regulares.##\n")
+
+# Ejercicio 1
+
+regex01 = re.compile('TATAG[^AT](T*|AC)TATA')
+
+testSequences = ["TATACGCGTATAGAACTATAGCCCTATA",
+                 "TATAGCGTATAGGACTATAGTATA",
+                 "GTATGTATAGCCGACTTA",
+                 "TATAGCCGACTATA"
+                 ]
+
+print("Resultado ejercicio 1: ")
+for i in range(0, len(testSequences)):
+    out = "La cadena " + str(i + 1)
+    ans = regex01.search(testSequences[i])
+    if ans:
+        out = out + " contiene la expresión regular en la posición [" + str(ans.start()) + ", " + str(ans.end()) + "]"
+    else:
+        out += " no contiene la expresión regular."
+    print(out)
+
+
+# Ejercicio 2
+
+regex_region_codificante = re.compile('ATG([ATGC]{3})*?T(AA|AG|GA)')
+
+testSequences = ["ATATATACATACTGGTAATGGGCGCGCGTGTGTTAAGTTCTGTTGTAGGGGTGATTAGGGGCG",
+                "GGCCCACACCCCACACCAATATATGTGGTGTGGGCTCCACTCTCTCGCGCTCGCGCTGGGGAT",
+                "ATAAGGTGTGTGGGCGCGCCCCGCGCGCGCGTTTTTTCGCGCGCCCCCGCGCGCGCGCGCGCG",
+                "GGCGCGGGACGCGGCGGCGGATCCCGATCCGTGCGTCAATACTATTATGGCCAGATAGAATAA",
+                "GTGCTGCTGCGGCGCCCACACCTATTATCTCTCTCTCTCTGCCTCTCCACCTCGGGGCTTAAT",
+                "GCGCTGCTGCTGGCTCGATGGGCGCGTGCGTCGTAGCTCGATGCTGGCTCGAGCTGTAATCTT",
+                "GGCGCTCGCTCGGATGCGCGGCCGGGCTCTCTGCTCGCGCTCGCTTCGCGCTCGTGACCGCTG",
+                "AATTGGTGCGCGCTCGCGCACACACAGAGAGAGGGTTTATATAGGATGATATATCCACATTGG",
+                "ATGCTGCTGCTGGCTCTGCTTGCGCTCTGCTCGCTGGGGTGTGTGTGCCGCGCGCTGCTGCTC",
+                "GCTGGGCTCGCTCGATGCGCGCGGGCGCGCGACCGCGGACGGCGTCGCTGCTAAATGGGCTTC"]
+results = []
+for i in range(0, len(testSequences)):
+    if regex_region_codificante.search(testSequences[i]):
+        results.append(i+1)
+
+print("Resultado ejercicio 2: ")
+print("Las cadenas que contienen la región codificante son: " + str(results) + "\n")
+    
 
 ## Probabilidad y Estadística. ##
 print("##Probabilidad y Estadística.##\n")
@@ -93,7 +141,4 @@ def itera(cadena, n, p):
         cadena += expansion_modificacion(cadena, p)
     return cadena
 print("Ejercicio 3: " + itera("1", 10, 0.9))
-
-
-
 
