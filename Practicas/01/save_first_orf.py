@@ -1,3 +1,6 @@
+# Description: Script that reads a DNA sequence from a file 
+# and saves the first ORF found in the sequence to another file.
+
 import re
 
 orf_regex = re.compile('ATG([ATGC]{3})+?T(AA|AG|GA)')

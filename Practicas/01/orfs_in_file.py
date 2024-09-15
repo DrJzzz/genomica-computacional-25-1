@@ -1,6 +1,5 @@
-# Autores:
-# - Josué Menchaca Carrillo 315294165
-# - Ricardo Flores
+# Description: Script that reads one or more .fna files 
+# and counts the number of ORFs in each file.
 
 import argparse
 import re

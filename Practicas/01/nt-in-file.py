@@ -1,3 +1,5 @@
+# Description: Write a Python program to count the number of characters in a file.
+
 def count_characters(file_path):
     try:
         with open(file_path, 'r') as file:
