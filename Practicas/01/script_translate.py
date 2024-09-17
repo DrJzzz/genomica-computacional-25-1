@@ -1,3 +1,8 @@
+# Integrantes del equipo:
+# - Frida Zayuli Garcí Barquero
+# - Menchaca Carrillo Rodolfo Josué
+# - Ricardo Flores Mata
+
 codones_traduccion = {"GCU":"A", "GCC":"A", "GCA":"A", "GCG":"A", # Alanina
     # Cisteina
     "UGU":"C", "UGC":"C",

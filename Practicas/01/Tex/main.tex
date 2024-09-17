@@ -1,0 +1,126 @@
+\documentclass[letter]{article}
+
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{tcolorbox}
+\usepackage{algorithm2e}
+\tcbuselibrary{theorems}
+\usepackage{parskip}
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{fancyvrb}
+\usepackage{listings}
+\usepackage{enumerate}
+\usepackage{listings}
+\graphicspath{ {images/} }
+\usepackage{cite}
+\lstset{language=Python}  
+
+\newcommand{\commentedbox}[2]{%
+  \mbox{
+    \begin{tabular}[t]{@{}c@{}}
+    $\boxed{\displaystyle#1}$\\
+    #2
+    \end{tabular}%
+  }%
+}
+
+\lstset{
+    basicstyle=\ttfamily,
+    breaklines=true,
+    frame=single,
+}
+
+\usepackage{vmargin}
+\usepackage[colorinlistoftodos]{todonotes}
+\setmargins{1.5cm}       % margen izquierdo
+{1.0cm}                  % margen superior
+{18.0cm}                 % anchura del texto
+{23.42cm}                % altura del texto
+{10pt}                   % altura de los encabezados
+{1cm}                    % espacio entre el texto y los encabezados
+{0pt}                    % altura del pie de página
+{2cm}
+
+\title{Practica 1 - Los nucleótidos}
+\author{ Richie \\
+Josué Menchaca \\
+Frida}
+\begin{document}
+\maketitle
+    
+    \section{Descubriendo nuevos organismos}
+
+    \textbf{Reporta el número de genes que hay en cada archivo de la carpeta. Cada fragmento de DNA (cada archivo FASTA) ¿Podría ser un genoma? Justifica tu respuesta.}
+
+    \begin{enumerate}
+        \item fragment\_1.fna - ORFs: 1645
+
+        \item fragment\_2.fna - ORFs: 266
+
+        \item fragment\_3.fna - ORFs: 2286
+
+        \item fragment\_r.fna - ORFs: 13970
+    \end{enumerate}
+
+    Solamente analizando el conteo de ORFs y el tamaño de las secuencias, no podemos concluir que estas secuencias no son genomas completos, ya que se han secuenciado genomas extremadamente pequeños por ejemplo el de unos \textit{circuvirus} en Taiwan, que tienen un genoma de solo $1.8$ nt y que solo secuencia dos proteínas. \cite{genome-virus}
+
+    Lo que si podríamos hacer seria delimitar a que tipo de organismos no podrían corresponder las secuencias (como genomas completos) por el tamaño.
+    Por ejemplo, podemos decir que el fragmento dos, en caso de ser un genoma completo, podría únicamente serlo de un virus, ya que dicho archivo contiene solo $100$ kb de información mientras que el genoma más pequeño encontrado para un ser vivo mide $160$kb. \cite{smallest-bacterial-genome}
+
+    \section{El dogma central}
+
+    \textbf{Instrucciones:} \\
+    Ejecuta script\_translate con:
+
+    \begin{lstlisting}
+$ python script_translate.py
+\end{lstlisting}
+
+El script te pedirá ingresar el path al archivo fasta con el gen que deseas procesar. \\
+* En caso de que el archivo sea p1\_LosNucleotidos\_gen1\_F2.fasta y este este a la misma altura que el script, puedes dejar esto en blanco y solo presionar enter.
+En otro caso, pon el path al archivo fasta que deseas procesar.
+
+Listo, se deben haber generado los 3 archivos resultado a la altura del script. \\
+
+\textbf{Gracias a la cadena de aminoácidos que otorgaste, fue posible inferir la familia de la proteína. La proteína en cuestión está relacionada con la formación del núcleo celular ¿Con ésta información podrías decir si el organismo se trata de un eucarionte o procarionte? Justifica tu respuesta.}
+
+Con esta limitada información, podría inclinarme a creer que el organismo en cuestión tiene células con núcleo, por lo tanto que sea un \textbf{eucarionte}. 
+Pero para dar una respuesta más concluyente necesitaría mas evidencia apoyando esta teoría y más información de la proteína.
+Muchos de los organismos en ventanas hidrotermales son \textit{Archeas}, estos organismos son los procariontes más cercanos al dominio eucaria \cite{archeas} y podría ser que estos sinteticen dicha proteína pero la usen de distinta forma.
+
+\newpage
+
+\section{Jurassic Park}
+
+La sobre enfatización de la información genética en la educación básica han contribuido a que en la cultura pop surjan ideas como la de conseguir ADN de una especie extinta y de completar dicha secuencia para traer de vuelta a la tierra animales extintos. \\
+Pero estas ideas no están bien fundamentadas en la biología. Ignoraran los muchos otros factores internos y externos necesarios para el desarrollo de un animal.
+
+A continuación presentare algunas de las trabas que nos imposibilitan poder recrear lo sucedido en Jurassic Park.
+
+Primero, ni siquiera contamos con la información. No tenemos ADN de dinosaurios y lo mas probable es que nunca vayamos a contar con un genoma de esta era ya que existen muchos procesos que imposibilitan la preservación de ADN a través de los eones.
+Dentro de nuestras células el ADN es mantenido por procesos enzimáticos de reparación y mantenimiento, después de la muerte del organismo, compartimentos celulares con enzimas catabólicas se rompen, lo cual tiene como consecuencia la rápida degradación del DNA.
+Además de todo esto, bacterias, hongos e incluso insectos que se alimentan de macromoléculas también dificultan la preservación del ADN. Y aun en el raro caso de que la molécula sea absorbida por una matriz mineral, otros procesos químicos aun así se encargaran de la degradación del ADN.
+La degradación es solo una de las dificultades, además esta la contaminación, confiabilidad entre otros. \cite{ancient-dna} \\
+
+Pero supongamos que tenemos ADN bien conservado de un dinosaurio. ¿El ADN contiene toda la información necesaria para recrear a un animal?
+Existe mucha información necesaria para la creación de un ser vivo que esta codificada en las estructuras que promueven su desarrollo, en su madre que los construye. 
+Todos los seres vivos son producto de la replicación de un ser vivo muy similar y en todas estas estructuras que tienen como objetivo replicar a un organismo existe mucha información codificada a la cual no tendríamos acceso, hormonas, alimento y muchas otras condiciones biologicas y fisicas. Por ejemplo, qué reguladores de mRNA de splicing y edición funcionarán para la síntesis.
+\\
+
+Imaginemos que tenemos toda esta información. Algunas opciones serian construir un ambiente de desarrollo artificial y la otra opción seria implantar el código genético en un huevo de un animal suficientemente similar, como en la película.
+La primera opción no esta a nuestro alcance actualmente, a pesar de bastantes esfuerzos, no hemos podido crear "vientres" artificiales que puedan sustituir uno biológico por todo el largo del proceso de desarrollo. La maquinaria biológica es compleja, sofisticada y eficiente haciendo lo que hace, crear estructuras con todas sus funciones e información parece algo imposible sin crear vida en si misma.
+
+Y la segunda opción es probablemente no factible ya que no hay animales vivos suficientemente próximos a los dinosaurios como para hacer esto posible.
+\\
+
+La expresión genética es compleja y depende de la interacción de muchos factores además de la secuencia genética. Además esta información esta codificada en complejas y sofisticadas estructuras biológicas que no podríamos replicar actualmente aun teniendo la información a nuestra disposición.
+    
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}
